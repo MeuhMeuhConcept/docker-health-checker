@@ -4,7 +4,7 @@
 PREV_IDLE=`cat /proc/stat | grep "^cpu\ " | awk '{print $5 + $6}'`
 PREV_NON_IDLE=`cat /proc/stat | grep "^cpu\ " | awk '{print $2 + $3 + $4 + $7 + $8 + $9}'`
 
-sleep 1s
+sleep 0.1
 
 IDLE=`cat /proc/stat | grep "^cpu\ " | awk '{print $5 + $6}'`
 NON_IDLE=`cat /proc/stat | grep "^cpu\ " | awk '{print $2 + $3 + $4 + $7 + $8 + $9}'`
