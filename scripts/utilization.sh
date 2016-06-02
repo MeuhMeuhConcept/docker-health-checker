@@ -43,7 +43,13 @@ go_exit() {
     return 0
 }
 
-DIR=$( dirname $( readlink -f $( readlink "${BASH_SOURCE[0]}" )))
+SRC=${BASH_SOURCE[0]}
+
+if [ -L ${BASH_SOURCE[0]} ];then
+    SRC=$( readlink "$SRC" )
+fi
+
+DIR=$( dirname $( readlink -f $SRC ))
 
 OPTS=$( getopt -o h -l warning-limit:,fail-limit: -- "$@" )
 if [ $? != 0 ]
